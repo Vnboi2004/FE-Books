@@ -1,27 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/main/Home";
-import About from "./pages/main/About";
-import Shop from "./pages/main/Shop";
-import Articles from "./pages/main/Articles";
-import Contact from "./pages/main/Contact";
+import { Routes, Route,  useLocation } from "react-router-dom";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { appRoutes } from "./routes/Routes";
+import './App.css';
+import { Suspense } from "react";
 
 const App = () => {
   
-  
+  const location = useLocation();
+
   return (
-    <div className="overflow-hidden">
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/pages" element={<About/>}/>
-          <Route path="/shop" element={<Shop/>}/>
-          <Route path="/articles" element={<Articles/>}/>
-          <Route path="/contact" element={<Contact/>}/>
-        </Routes>
-      </Router>
-    </div>
-  )
-}
+    <SwitchTransition mode="in-out">
+        <CSSTransition
+        key={location.pathname}
+        className="fade"
+        timeout={150}
+        exit={false}
+      >
+        <Suspense fallback={<h1 className="text-center">Loading</h1>}>
+          <Routes location={location}>
+            {appRoutes.map((route) => <Route key={route.path} path={route.path} element={<route.component/>}/>)}
+          </Routes>
+        </Suspense>
+      </CSSTransition>
+    </SwitchTransition>
+  );
+};
 
 export default App
