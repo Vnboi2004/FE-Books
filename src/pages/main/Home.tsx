@@ -5,6 +5,13 @@ import { googleBooksApi } from "../../api/googleBooks.api";
 import { IoSearchOutline } from "react-icons/io5";
 import { TiStarFullOutline } from "react-icons/ti";
 import { TiPinOutline } from "react-icons/ti";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // CSS cơ bản
+import 'swiper/css/pagination'; // nếu dùng phân trang
+import 'swiper/css/navigation'; // nếu dùng nút điều hướng
+
+import { Pagination, Navigation } from 'swiper/modules';
+
 interface HomeProps {
     subject?: string;
 };
@@ -45,39 +52,49 @@ const Home: React.FC<HomeProps> = ({subject = 'history'}) => {
                     </button>
                 </div>
             </div>
-            <div className="grid grid-cols-5 gap-8 justify-items-center">
-                {books.map((book) => (
-                    <div key={book.id} className="w-full border border-gray-300 rounded-sm bg-[#3E92CC]/15 relative">
-                        <TiPinOutline className="absolute -top-2 -right-2 text-2xl"/>
-                        <div className="p-4 w-full flex flex-col border-4 border-white">
-                            {/* image */}
-                            <img
-                                src={book.volumeInfo.imageLinks?.thumbnail || ''}   
-                                alt={book.volumeInfo.title}
-                                className="h-56 object-cover rounded-md mb-2"
-                            />
-                            <div className="flex flex-col items-start gap-1">
-                                {/* Title */}
-                                <h3 className="font-semibold line-clamp-1">{book.volumeInfo.title}</h3>
-                                {/* authors */}
-                                <p className="text-sm text-gray-600 line-clamp-1">
-                                    {book.volumeInfo.authors?.join(', ') || 'Tác giả không rõ'}
-                                </p>
-                                {/* published date */}
-                                <p className="text-sm">{book.volumeInfo.publishedDate}</p>
-                                {/* averageRating */}
-                                <div className='flex items-center gap-2'>
-                                    <div className='flex items-center'>
-                                        {[...Array(5)].map((_, index) => (
-                                            <TiStarFullOutline key={index} className={` ${index < book.volumeInfo.averageRating ? "text-yellow-400" : "text-gray-300"}`}/>
-                                        ))}
+            <div className="py-10">
+                <Swiper
+                    slidesPerView={5}
+                    spaceBetween={15}
+                    modules={[Pagination, Navigation]}
+                    className=""
+                    >
+            
+                        {books.map((book) => (
+                            <SwiperSlide key={book.id}>
+                                <div className="w-full border border-gray-300 rounded-sm bg-[#3E92CC]/15 relative">
+                                    <TiPinOutline className="absolute -top-1 -right-1 text-2xl"/>
+                                    <div className="p-4 w-full flex flex-col border-4 border-white">
+                                        {/* image */}
+                                        <img
+                                            src={book.volumeInfo.imageLinks?.thumbnail || ''}   
+                                            alt={book.volumeInfo.title}
+                                            className="h-56 object-cover rounded-md mb-2"
+                                        />
+                                        <div className="flex flex-col items-start gap-1">
+                                            {/* Title */}
+                                            <h3 className="font-semibold line-clamp-1">{book.volumeInfo.title}</h3>
+                                            {/* authors */}
+                                            <p className="text-sm text-gray-600 line-clamp-1">
+                                                {book.volumeInfo.authors?.join(', ') || 'Tác giả không rõ'}
+                                            </p>
+                                            {/* published date */}
+                                            <p className="text-sm">{book.volumeInfo.publishedDate}</p>
+                                            {/* averageRating */}
+                                            <div className='flex items-center gap-2'>
+                                                <div className='flex items-center'>
+                                                    {[...Array(5)].map((_, index) => (
+                                                        <TiStarFullOutline key={index} className={` ${index < book.volumeInfo.averageRating ? "text-yellow-400" : "text-gray-300"}`}/>
+                                                    ))}
+                                                </div>
+                                                <span className='text-sm text-gray-600'>({book.volumeInfo.averageRating ? book.volumeInfo.averageRating : 0})</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <span className='text-sm text-gray-600'>({book.volumeInfo.averageRating ? book.volumeInfo.averageRating : 0})</span>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                            </SwiperSlide>
+                        ))}
+                </Swiper>
             </div>
         </MainLayout>
     )
