@@ -16,5 +16,12 @@ export interface GoogleBookItem {
             smallThumbnail?: string;
             thumbnail?: string;
         };
+        categories?: [];
+        averageRating: number;
+        language: string;
+        previewLink?: string;
+        ratingsCount?: number;
+        subtitle?: string;
+        pageCount: number;
     },
 };
