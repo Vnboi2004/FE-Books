@@ -4,6 +4,7 @@ import { GoogleBookItem } from "../../types/googleBooks.types";
 import { googleBooksApi } from "../../api/googleBooks.api";
 import { IoSearchOutline } from "react-icons/io5";
 import { TiStarFullOutline } from "react-icons/ti";
+import { TiPinOutline } from "react-icons/ti";
 interface HomeProps {
     subject?: string;
 };
@@ -46,7 +47,8 @@ const Home: React.FC<HomeProps> = ({subject = 'history'}) => {
             </div>
             <div className="grid grid-cols-5 gap-8 justify-items-center">
                 {books.map((book) => (
-                    <div key={book.id} className="w-full border border-gray-300 rounded-sm bg-[#3E92CC]/15">
+                    <div key={book.id} className="w-full border border-gray-300 rounded-sm bg-[#3E92CC]/15 relative">
+                        <TiPinOutline className="absolute -top-2 -right-2 text-2xl"/>
                         <div className="p-4 w-full flex flex-col border-4 border-white">
                             {/* image */}
                             <img
@@ -67,7 +69,7 @@ const Home: React.FC<HomeProps> = ({subject = 'history'}) => {
                                 <div className='flex items-center gap-2'>
                                     <div className='flex items-center'>
                                         {[...Array(5)].map((_, index) => (
-                                            <TiStarFullOutline key={index} className={` ${index < book.volumeInfo.averageRating ? "text-yellow-300" : "text-gray-300"}`}/>
+                                            <TiStarFullOutline key={index} className={` ${index < book.volumeInfo.averageRating ? "text-yellow-400" : "text-gray-300"}`}/>
                                         ))}
                                     </div>
                                     <span className='text-sm text-gray-600'>({book.volumeInfo.averageRating ? book.volumeInfo.averageRating : 0})</span>
