@@ -6,13 +6,14 @@ const Pages = lazy(() => import('../pages/main/Pages'));
 const Shop = lazy(() => import('../pages/main/Shop'));
 const Articles = lazy(() => import('../pages/main/Articles'));
 const Contact = lazy(() => import('../pages/main/Contact'));
-
+const NotFound = lazy(() => import('../pages/main/NotFound'));
 export const appRoutes = [
     { path: '/', component: Home },
     { path: '/about', component: About },
     { path: '/pages', component: Pages },
     { path: '/shop', component: Shop },
     { path: '/articles', component: Articles },
-    { path: '/contact', component: Contact }
+    { path: '/contact', component: Contact },
+    { path: '*', component: NotFound },
 ];
 
