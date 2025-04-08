@@ -21,6 +21,7 @@ import { IoSearchOutline } from "react-icons/io5";
             <ArtSection/>
             {/* Technology */}
             <TechnologySection/>
+            <h1>Ngon</h1>
         </MainLayout>
     )
 }
