@@ -1,0 +1,12 @@
+{
+    "title": "TPHung",
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact"
+    },
+    "language": {
+        "english": "English",
+        "vietnamese": "Vietnamese"
+    }
+}

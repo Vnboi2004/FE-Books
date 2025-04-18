@@ -2,18 +2,34 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-import en from './locales/en/translation.json';
-import vi from './locales/vi/translation.json';
+// Dùng import thay vì require
+import headerEn from './locales/en/header.json';
+import aboutEn from './locales/en/about.json';
+import contactEn from './locales/en/contact.json';
+
+import headerVi from './locales/vi/header.json';
+import aboutVi from './locales/vi/about.json';
+import contactVi from './locales/vi/contact.json';
 
 i18n
-  .use(LanguageDetector) // tự động phát hiện từ trình duyệt hoặc localStorage
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      en: { translation: en },
-      vi: { translation: vi }
-    },
     fallbackLng: 'en',
+    ns: ['header', 'about', 'contact'],
+    defaultNS: 'header',
+    resources: {
+      en: {
+        header: headerEn,
+        about: aboutEn,
+        contact: contactEn,
+      },
+      vi: {
+        header: headerVi,
+        about: aboutVi,
+        contact: contactVi,
+      },
+    },
     interpolation: {
       escapeValue: false,
     },
@@ -21,7 +37,7 @@ i18n
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
     },
-    load: 'languageOnly',
+    load: 'languageOnly', // "vi-VN" sẽ thành "vi"
   });
 
 export default i18n;

@@ -1,0 +1,9 @@
+{
+    "title": "TPHung",
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "contact": "Contact"
+    },
+   "account": "Account"
+}

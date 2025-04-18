@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 const Header = () => {
   const { i18n } = useTranslation();
+  const { t } = useTranslation('header');
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language?.split('-')[0] || 'en');
   
   useEffect(() => {
@@ -38,7 +39,7 @@ const Header = () => {
                       to={navLink.path}
                       className={({ isActive }) => `text-base font-heading p-2 ${isActive ? 'text-white' : 'text-black'}`}
                       >
-                        {navLink.label}
+                        {t(navLink.label)}
                     </NavLink>
                 </li>
               ))}
@@ -47,7 +48,7 @@ const Header = () => {
           {/* Acount */}
           <button className='flex items-center gap-2 cursor-pointer'>
             <LuUserRound />
-            <h1 className='text-base font-heading'>ACCOUNT</h1>
+            <h1 className='text-base font-heading'>{t('account')}</h1>
           </button>
           {/* Translation */}
           <div className="flex items-center gap-2">
