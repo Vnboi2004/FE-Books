@@ -1,9 +1,9 @@
-import Logo from '../../assets/images/logo.png';
 import { navLinks } from '../../data';
 import { LuUserRound } from "react-icons/lu";
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
+import { MdGTranslate } from "react-icons/md";
 const Header = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation('header');
@@ -20,24 +20,21 @@ const Header = () => {
   };
 
   return (
-    <div className='border-b border-b-gray-300 bg-[#3E92CC]'>
+    <div className='bg-primary'>
       <div className='max-w-[var(--container-width-lg)] mx-auto py-6'>
         <div className='flex items-center justify-between'>
           {/* Logo */}
-          <div className='flex items-center gap-2.5'>
-            <img src={Logo} alt="" className='w-12 h-12 object-cover'/>
-            <h1 className='text-3xl font-primary font-semibold'>
-              TPHung
-            </h1>
-          </div>
+          <h1 className='text-3xl font-primary font-semibold text-text-primary'>
+            TPHung
+          </h1>
           {/* Nav links */}
           <div>
-            <ul className='flex items-center gap-4'>
+            <ul className='flex items-center gap-6'>
               {navLinks.map((navLink) => (
-                <li key={navLink.id}>
+                <li key={navLink.id} className='min-w-[80px] max-w-[200px] truncate'>
                     <NavLink 
                       to={navLink.path}
-                      className={({ isActive }) => `text-base font-heading p-2 ${isActive ? 'text-white' : 'text-black'}`}
+                      className={({ isActive }) => `text-base font-heading p-2 ${isActive ? 'text-text-primary' : 'text-text-p'}`}
                       >
                         {t(navLink.label)}
                     </NavLink>
@@ -45,13 +42,8 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          {/* Acount */}
-          <button className='flex items-center gap-2 cursor-pointer'>
-            <LuUserRound />
-            <h1 className='text-base font-heading'>{t('account')}</h1>
-          </button>
-          {/* Translation */}
-          <div className="flex items-center gap-2">
+          
+          {/* <div className="flex items-center gap-2">
             <button 
               disabled={currentLanguage === 'en'}
               onClick={() => handleChangeLanguage('en')}
@@ -62,7 +54,20 @@ const Header = () => {
               onClick={() => handleChangeLanguage('vi')}
                className={`text-base font-primary font-bold cursor-pointer ${currentLanguage !== 'en' ? 'text-white' : 'text-black'}`}
               >Vietnamese</button>
+          </div> */}
+          <div>
+            {/* Translation */}
+            <button>
+              <MdGTranslate className='text-text-primary'/>
+            </button>
+            {/* dark mode */}
+
           </div>
+          {/* Acount */}
+          <button className='flex items-center gap-2 cursor-pointer text-text-primary'>
+            <LuUserRound />
+            <h1 className='text-base font-heading'>{t('account')}</h1>
+          </button>
         </div>
       </div>
     </div>

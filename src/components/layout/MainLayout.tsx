@@ -9,7 +9,7 @@ interface MainLayoutProps {
  
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     return (
-        <div>
+        <div className="bg-bg-primary">
             <Header/>
             <main className="flex-grow max-w-[var(--container-width-lg)] mx-auto">{children}</main>
             <Footer/>

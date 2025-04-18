@@ -7,12 +7,15 @@
   --font-heading: "Sarala", "sans-serif";
 
   /* Colors text */
-
+  --color-text-primary: #abc7ff;
+  --color-text-p: #e3e2e6;
   /* Colors button */
 
   /* Colors backgroud */
 
   /* Colors ... */
+  --color-primary: #262931;
+  --color-bg-primary: #1a1b1f;
 
   /* Container */
   --container-width-sm: 640px;
