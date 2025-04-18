@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { MdGTranslate } from "react-icons/md";
+import { MdDarkMode } from "react-icons/md";
+import { IoLogoGithub } from "react-icons/io";
 const Header = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation('header');
@@ -55,13 +57,19 @@ const Header = () => {
                className={`text-base font-primary font-bold cursor-pointer ${currentLanguage !== 'en' ? 'text-white' : 'text-black'}`}
               >Vietnamese</button>
           </div> */}
-          <div>
+          <div className='flex items-center gap-4'>
+            {/* infomation author */}
+            <button>
+              <IoLogoGithub className='text-text-primary'/>
+            </button>
+            {/* dark mode */}
+            <button>
+              <MdDarkMode className='text-text-primary'/>
+            </button>
             {/* Translation */}
             <button>
               <MdGTranslate className='text-text-primary'/>
             </button>
-            {/* dark mode */}
-
           </div>
           {/* Acount */}
           <button className='flex items-center gap-2 cursor-pointer text-text-primary'>
