@@ -36,7 +36,7 @@ const Header = () => {
                 <li key={navLink.id} className='min-w-[80px] max-w-[200px] truncate'>
                     <NavLink 
                       to={navLink.path}
-                      className={({ isActive }) => `text-base font-heading p-2 ${isActive ? 'text-text-primary' : 'text-text-p'}`}
+                      className={({ isActive }) => `text-base p-2 ${isActive ? 'text-text-primary' : 'text-text-p'}`}
                       >
                         {t(navLink.label)}
                     </NavLink>
@@ -45,36 +45,40 @@ const Header = () => {
             </ul>
           </div>
           
-          {/* <div className="flex items-center gap-2">
-            <button 
-              disabled={currentLanguage === 'en'}
-              onClick={() => handleChangeLanguage('en')}
-              className={`text-base font-primary font-bold cursor-pointer ${currentLanguage === 'en' ? 'text-white' : 'text-black'}`}
-            >English</button>
-            <button 
-              disabled={currentLanguage === 'vi'}
-              onClick={() => handleChangeLanguage('vi')}
-               className={`text-base font-primary font-bold cursor-pointer ${currentLanguage !== 'en' ? 'text-white' : 'text-black'}`}
-              >Vietnamese</button>
-          </div> */}
-          <div className='flex items-center gap-4'>
+          <div className='flex items-center'>
             {/* infomation author */}
-            <button>
-              <IoLogoGithub className='text-text-primary'/>
+            <button className='px-3.5 py-1 cursor-pointer hover:bg-text-primary group rounded-sm'>
+              <IoLogoGithub className='text-text-primary text-2xl group-hover:text-text-button'/>
             </button>
             {/* dark mode */}
-            <button>
-              <MdDarkMode className='text-text-primary'/>
+            <button className='px-3.5 py-1 cursor-pointer hover:bg-text-primary group rounded-sm'>
+              <MdDarkMode className='text-text-primary text-2xl group-hover:text-text-button'/>
             </button>
             {/* Translation */}
-            <button>
-              <MdGTranslate className='text-text-primary'/>
-            </button>
+            <div className='relative group cursor-pointer'>
+              <button className='px-3.5 py-1 hover:bg-text-primary group rounded-sm'>
+                <MdGTranslate className='text-text-primary text-2xl group-hover:text-text-button'/>
+              </button>
+              <div className='absolute top-1/2 left-0 translate-y-1/2 hidden group-hover:block bg-gray-200 text-sm px-2 py-1 rounded'>
+                <button 
+                  disabled={currentLanguage === 'en'}
+                  onClick={() => handleChangeLanguage('en')}
+                  className={`text-base font-primary font-bold cursor-pointer ${currentLanguage === 'en' ? 'text-white' : 'text-black'}`}
+                  >English
+                </button>
+                <button 
+                  disabled={currentLanguage === 'vi'}
+                  onClick={() => handleChangeLanguage('vi')}
+                  className={`text-base font-primary font-bold cursor-pointer ${currentLanguage !== 'en' ? 'text-white' : 'text-black'}`}
+                  >Vietnamese
+                </button>
+              </div>
+            </div>
           </div>
           {/* Acount */}
           <button className='flex items-center gap-2 cursor-pointer text-text-primary'>
             <LuUserRound />
-            <h1 className='text-base font-heading'>{t('account')}</h1>
+            <h1 className='text-base'>{t('account')}</h1>
           </button>
         </div>
       </div>

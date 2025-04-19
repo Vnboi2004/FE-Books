@@ -11,6 +11,7 @@ import { Swiper as SwiperType } from 'swiper';
 
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 
 interface TechnologySectionProps {
@@ -19,7 +20,7 @@ interface TechnologySectionProps {
 
 const TechnologySection: React.FC<TechnologySectionProps> = ({ subject = 'technology' }) => {
 
-
+    const { t } = useTranslation('home');
     
     const [books, setBooks] = useState<GoogleBookItem[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -50,7 +51,7 @@ const TechnologySection: React.FC<TechnologySectionProps> = ({ subject = 'techno
                 {/* Categories */}
                 <div className="flex items-center gap-4">
                     <div className="w-2 h-14 bg-[#3E92CC] rounded-md"></div>
-                    <h1 className="text-3xl font-semibold font-primary">Technology</h1>
+                    <h1 className="text-3xl font-semibold font-primary">{t('categories.technology')}</h1>
                 </div>
                 {/* Header */}
                 <div className="flex justify-end">

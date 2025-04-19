@@ -11,6 +11,7 @@ import { Swiper as SwiperType } from 'swiper';
 import 'swiper/css/grid';
 import { Pagination, Navigation, Grid } from 'swiper/modules';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 
 interface HistorySectionProps {
@@ -19,7 +20,7 @@ interface HistorySectionProps {
 
 const ArtSection: React.FC<HistorySectionProps> = ({ subject = 'art' }) => {
 
-
+    const { t } = useTranslation('home');
     
     const [books, setBooks] = useState<GoogleBookItem[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
@@ -50,7 +51,7 @@ const ArtSection: React.FC<HistorySectionProps> = ({ subject = 'art' }) => {
                 {/* Categories */}
                 <div className="flex items-center gap-4">
                     <div className="w-2 h-14 bg-[#3E92CC] rounded-md"></div>
-                    <h1 className="text-3xl font-semibold font-primary">Art</h1>
+                    <h1 className="text-3xl font-semibold font-primary">{t('categories.art')}</h1>
                 </div>
                 {/* Header */}
                 <div className="flex justify-end">
