@@ -1,23 +1,41 @@
 @import "tailwindcss";
 
 @theme {
-  /* Font style */
-  --font-primary: "Lilita One", "sans-serif";
-  --font-secondary: "Winky Sans", "sans-serif";
-  --font-heading: "Sarala", "sans-serif";
+  /* Font styles */
 
-  /* Colors text */
-  --color-text-primary: #abc7ff;
-  --color-text-second: #e3e2e6;
-  --color-text-p: #e3e2e6;
-  --color-text-button: #002f65;
-  /* Colors button */
+  /* Setting dark */
+  --color-primary-shade: #82acff;
+  --color-primary-tint: #d4e2ff;
+  --color-primary-rgb: 171, 199, 255;
+  --color-primary: #abc7ff;
+  --color-on-primary: #002f65;
+  --color-primary-container: #00458f;
+  --color-on-primary-container: #d7e3ff;
+  --color-secondary: #bec6dc;
+  --color-on-secondary: #283041;
+  --color-secondary-container: #3e4759;
+  --color-on-secondary-container: #dae2f9;
+  --color-surface: #1a1b1f;
+  --color-on-surface: #e3e2e6;
+  --color-surface-variant: #44474e;
+  --color-on-surface-variant: #c4c6d0;
+  --color-outline: #8e9099;
+  --color-outline-variant: #44474e;
+  --color-inverse-surface: #e3e2e6;
+  --color-inverse-on-surface: #2f3033;
+  --color-inverse-primary: #005cbb;
+  --color-surface-0: #141518;
+  --color-surface-1: #21242a;
+  --color-surface-2: #262931;
+  --color-surface-3: #2a2e38;
+  --color-surface-4: #2b303a;
+  --color-surface-5: #2e333e;
+  --color-code: #d3bbff;
+  --color-red: #ffb4aa;
+  --color-green: #55e16b;
+  --color-orange: #ffb874;
 
-  /* Colors backgroud */
-
-  /* Colors ... */
-  --color-primary: #262931;
-  --color-bg-primary: #1a1b1f;
+  /* Setting light */
 
   /* Container */
   --container-width-sm: 640px;

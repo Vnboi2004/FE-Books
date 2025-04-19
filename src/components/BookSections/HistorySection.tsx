@@ -50,21 +50,21 @@ const HistorySection: React.FC<HistorySectionProps> = ({ subject = 'history' }) 
             <div className="py-10 flex flex-col gap-6">
                 {/* Categories */}
                 <div className="flex items-center gap-4">
-                    <div className="w-2 h-14 bg-[#3E92CC] rounded-md"></div>
-                    <h1 className="text-3xl font-semibold font-primary">{t('categories.history')}</h1>
+                    <div className="w-2 h-14 bg-primary rounded-md"></div>
+                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.history')}</h1>
                 </div>
                 {/* Header */}
                 <div className="flex justify-end">
                     <div className="flex items-center gap-2">
                         <button 
                             onClick={() => swiperRef.current?.slidePrev()}
-                            className="p-2 rounded-full bg-[#3E92CC] cursor-pointer group">
-                            <FiChevronLeft className="text-white group-hover:-translate-x-1 duration-300 transition-transform ease-in-out"/>
+                            className="p-2 rounded-full bg-primary cursor-pointer group">
+                            <FiChevronLeft className="text-on-primary group-hover:-translate-x-1 duration-300 transition-transform ease-in-out"/>
                         </button>
                         <button 
                             onClick={() => swiperRef.current?.slideNext()}
-                            className="p-2 rounded-full bg-[#3E92CC] cursor-pointer group">
-                            <FiChevronRight className="text-white group-hover:translate-x-1 duration-300 transition-transform ease-in-out"/>
+                            className="p-2 rounded-full bg-primary cursor-pointer group">
+                            <FiChevronRight className="text-on-primary group-hover:translate-x-1 duration-300 transition-transform ease-in-out"/>
                         </button>
                     </div>
                 </div>

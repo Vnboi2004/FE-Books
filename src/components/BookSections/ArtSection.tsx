@@ -50,8 +50,8 @@ const ArtSection: React.FC<HistorySectionProps> = ({ subject = 'art' }) => {
             <div className="py-10 flex flex-col gap-6">
                 {/* Categories */}
                 <div className="flex items-center gap-4">
-                    <div className="w-2 h-14 bg-[#3E92CC] rounded-md"></div>
-                    <h1 className="text-3xl font-semibold font-primary">{t('categories.art')}</h1>
+                    <div className="w-2 h-14 bg-primary rounded-md"></div>
+                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.art')}</h1>
                 </div>
                 {/* Header */}
                 <div className="flex justify-end">

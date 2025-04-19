@@ -4,10 +4,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 // Dùng import thay vì require
 import headerEn from './locales/en/header.json';
+import homeEn from './locales/en/home.json';
 import aboutEn from './locales/en/about.json';
 import contactEn from './locales/en/contact.json';
 
 import headerVi from './locales/vi/header.json';
+import homeVi from './locales/vi/home.json';
 import aboutVi from './locales/vi/about.json';
 import contactVi from './locales/vi/contact.json';
 
@@ -16,16 +18,18 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
-    ns: ['header', 'about', 'contact'],
+    ns: ['header', 'home', 'about', 'contact'],
     defaultNS: 'header',
     resources: {
       en: {
         header: headerEn,
+        home: homeEn,
         about: aboutEn,
         contact: contactEn,
       },
       vi: {
         header: headerVi,
+        home: homeVi,
         about: aboutVi,
         contact: contactVi,
       },
