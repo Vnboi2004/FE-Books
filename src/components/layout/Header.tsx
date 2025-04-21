@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react';
 import { MdGTranslate } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { IoLogoGithub } from "react-icons/io";
+import useDarkMode from '../../hooks/useDarkMode';
 const Header = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation('header');
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language?.split('-')[0] || 'en');
+  const { darkMode, setDarkMode } = useDarkMode();
   
   useEffect(() => {
     setCurrentLanguage(i18n.language?.split('-')[0]);
