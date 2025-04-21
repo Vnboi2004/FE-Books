@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 import { MdGTranslate } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
 import { IoLogoGithub } from "react-icons/io";
+import { MdLightMode } from "react-icons/md"; 
 import useDarkMode from '../../hooks/useDarkMode';
 const Header = () => {
-  const { i18n } = useTranslation();
+  const { i18n } = useTranslation();    
   const { t } = useTranslation('header');
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language?.split('-')[0] || 'en');
   const { darkMode, setDarkMode } = useDarkMode();
@@ -47,17 +48,45 @@ const Header = () => {
             </ul>
           </div>
           
-          <div className='flex items-center gap-1 text-primary'>
+          <div className='flex items-center gap-1'>
             {/* infomation author */}
-            <button className='px-3.5 py-1 cursor-pointer hover:bg-primary group rounded-sm'>
+            <button className='px-3.5 py-1 cursor-pointer hover:bg-primary group rounded-sm text-primary'>
               <IoLogoGithub className='text-2xl group-hover:text-on-primary'/>
             </button>
             {/* dark mode */}
-            <button className='px-3.5 py-1 cursor-pointer hover:bg-primary group rounded-sm'>
-              <MdDarkMode className='text-2xl group-hover:text-on-primary'/>
-            </button>
-            {/* Translation */}
             <div className='relative group cursor-pointer'>
+              <button className='px-3.5 py-1 group-hover:bg-primary rounded-sm text-primary'>
+                {
+                  darkMode 
+                  ? <MdDarkMode className='text-2xl group-hover:text-on-primary'/> 
+                  : <MdLightMode className='text-2xl group-hover:text-on-primary'/>
+                }
+              </button>
+              <div className='absolute top-full left-0 hidden group-hover:block bg-surface-3 text-sm rounded z-[10]'>
+                <div className='px-4 py-2.5 flex flex-col items-start gap-2'>
+                  <button 
+                    className={`flex items-center gap-2 px-4 py-1.5 text-base font-semibold hover:bg-primary rounded-sm hover:text-on-primary cursor-pointer text-primary`}
+                    onClick={() => setDarkMode(!darkMode)}
+                  >
+                    <MdDarkMode className='text-2xl text-primary group-hover:text-on-primary'/>
+                    <span className='text-base'>Dark</span>
+                  </button>
+                  <button 
+                    className={`flex items-center gap-2 px-4 py-1.5 text-base font-semibold hover:bg-primary rounded-sm hover:text-on-primary cursor-pointer text-primary`}
+                    onClick={() => setDarkMode(!darkMode)}
+                  >
+                    <MdLightMode className='text-2xl group-hover:text-on-primary'/>
+                    <span className='text-base'>Light</span>
+                  </button>
+                  <button className='flex items-center gap-2 px-4 py-1.5 text-base font-semibold hover:bg-primary rounded-sm hover:text-on-primary cursor-pointer text-primary'>
+                    <IoLogoGithub className='text-2xl group-hover:text-on-primary'/>
+                    <span className='text-base'>Systems</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* Translation */}
+            <div className='relative group cursor-pointer text-primary'>
               <button className='px-3.5 py-1 group-hover:bg-primary rounded-sm'>
                 <MdGTranslate className='text-2xl group-hover:text-on-primary'/>
               </button>
