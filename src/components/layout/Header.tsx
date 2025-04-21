@@ -51,9 +51,9 @@ const Header = () => {
           
           <div className='flex items-center gap-1'>
             {/* infomation author */}
-            <button className='px-3.5 py-1 cursor-pointer hover:bg-primary group rounded-sm text-primary'>
+            <a href='https://github.com/Vnboi2004/' className='px-3.5 py-1 cursor-pointer hover:bg-primary group rounded-sm text-primary'>
               <IoLogoGithub className='text-2xl group-hover:text-on-primary'/>
-            </button>
+            </a>
             {/* dark mode */}
             <div className='relative group cursor-pointer'>
               <button className='px-3.5 py-1 group-hover:bg-primary rounded-sm text-primary'>
@@ -110,7 +110,7 @@ const Header = () => {
             </div>
           </div>
           {/* Acount */}
-          <button className='flex items-center gap-2 cursor-pointer text-primary min-w-[100px]'>
+          <button className='flex items-center gap-2 cursor-pointer text-primary font-semibold min-w-[100px]'>
             <LuUserRound />
             <h1 className='text-base'>{t('account')}</h1>
           </button>
