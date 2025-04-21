@@ -8,6 +8,7 @@ import { MdDarkMode } from "react-icons/md";
 import { IoLogoGithub } from "react-icons/io";
 import { MdLightMode } from "react-icons/md"; 
 import useDarkMode from '../../hooks/useDarkMode';
+import { PiLaptop } from "react-icons/pi";
 const Header = () => {
   const { i18n } = useTranslation();    
   const { t } = useTranslation('header');
@@ -79,7 +80,7 @@ const Header = () => {
                     <span className='text-base'>Light</span>
                   </button>
                   <button className='flex items-center gap-2 px-4 py-1.5 text-base font-semibold hover:bg-primary rounded-sm hover:text-on-primary cursor-pointer text-primary'>
-                    <IoLogoGithub className='text-2xl group-hover:text-on-primary'/>
+                    <PiLaptop className='text-2xl group-hover:text-on-primary'/>
                     <span className='text-base'>Systems</span>
                   </button>
                 </div>
