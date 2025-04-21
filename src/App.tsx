@@ -3,8 +3,6 @@ import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { appRoutes } from "./routes/Routes";
 import './App.css';
 import { Suspense } from "react";
-import useDarkMode from "./hooks/useDarkMode";
-
 const App = () => {
   
   const location = useLocation();
