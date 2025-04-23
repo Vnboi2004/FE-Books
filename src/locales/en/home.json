@@ -3,6 +3,9 @@
         "history": "History",
         "art": "Art",
         "technology": "Technology",
-        "fiction": "Fiction"
+        "fiction": "Fiction",
+        "science": "Science",
+        "medical": "Medical",
+        "biography": "Biography"
    }
 }

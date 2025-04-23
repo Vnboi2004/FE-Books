@@ -1,5 +1,7 @@
 import { ArtSection, HistorySection, TechnologySection } from "../../components/BookSections";
+import BiographySection from "../../components/BookSections/BiographySection";
 import FictionSection from "../../components/BookSections/FictionSection";
+import MedicalSection from "../../components/BookSections/MedicalSection";
 import MainLayout from "../../components/layout/MainLayout"
 import { IoSearchOutline } from "react-icons/io5";
 
@@ -25,6 +27,10 @@ import { IoSearchOutline } from "react-icons/io5";
             <TechnologySection/>
             {/* Fiction */}
             <FictionSection/>
+            {/* Medical */}
+            <MedicalSection/>
+            {/* Biography */}
+            <BiographySection/>
 
         </MainLayout>
     )

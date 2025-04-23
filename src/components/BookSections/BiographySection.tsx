@@ -2,23 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import { GoogleBookItem } from "../../types/googleBooks.types";
 import { googleBooksApi } from "../../api/googleBooks.api";
 import { TiStarFullOutline } from "react-icons/ti";
-import { TiPinOutline } from "react-icons/ti";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // CSS cơ bản
 import 'swiper/css/pagination'; // nếu dùng phân trang
 import 'swiper/css/navigation'; // nếu dùng nút điều hướng
 import { Swiper as SwiperType } from 'swiper';
-
-import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css/grid';
+import { Pagination, Navigation, Grid } from 'swiper/modules';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 
 
-interface ScienceSectionProps {
+interface BiographySectionProps {
     subject?: string;
 };
 
-const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) => {
+const BiographySection: React.FC<BiographySectionProps> = ({ subject = 'biography' }) => {
 
     const { t } = useTranslation('home');
     
@@ -51,10 +50,11 @@ const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) 
                 {/* Categories */}
                 <div className="flex items-center gap-4">
                     <div className="w-2 h-14 bg-primary rounded-md"></div>
-                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.science')}</h1>
+                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.biography')}</h1>
                 </div>
                 {/* Header */}
                 <div className="flex justify-end">
+                    <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2">
                         <button 
                             onClick={() => swiperRef.current?.slidePrev()}
@@ -67,21 +67,22 @@ const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) 
                             <FiChevronRight className="text-on-primary group-hover:translate-x-1 duration-300 transition-transform ease-in-out"/>
                         </button>
                     </div>
+                    </div>
                 </div>
                 {/* Content */}
                 <div className="">
                     <Swiper
                         key={books.length}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
-                        slidesPerView={5} // Hiển thị 1 slide gồm 5 items
-                        slidesPerGroup={5} // Chuyển trang 1 lần 5 items
-                        spaceBetween={15} // khoảng cách giữa các items
-                        loop={true} // vỏng lặp items
-                        autoplay={{
-                            delay: 3000,
-                            disableOnInteraction: false,
+                        slidesPerGroup={5}
+                        slidesPerView={5}
+                        // loop={true}
+                        grid={{
+                            rows: 2, // gồm 2 dòng
+                            fill: 'row', // sắp xếp theo dòng
                         }}
-                        modules={[Pagination, Navigation, Autoplay]}
+                        spaceBetween={15}
+                        modules={[Pagination, Navigation, Grid]}
                         className=""
                         >
                             {books.map((book) => (
@@ -124,4 +125,4 @@ const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) 
     )
 }
 
-export default ScienceSection
+export default BiographySection

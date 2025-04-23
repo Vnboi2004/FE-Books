@@ -14,11 +14,11 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 
 
-interface ScienceSectionProps {
+interface MedicalSectionProps {
     subject?: string;
 };
 
-const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) => {
+const MedicalSection: React.FC<MedicalSectionProps> = ({ subject = 'medical' }) => {
 
     const { t } = useTranslation('home');
     
@@ -51,7 +51,7 @@ const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) 
                 {/* Categories */}
                 <div className="flex items-center gap-4">
                     <div className="w-2 h-14 bg-primary rounded-md"></div>
-                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.science')}</h1>
+                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.medical')}</h1>
                 </div>
                 {/* Header */}
                 <div className="flex justify-end">
@@ -124,4 +124,4 @@ const ScienceSection: React.FC<ScienceSectionProps> = ({ subject = 'science' }) 
     )
 }
 
-export default ScienceSection
+export default MedicalSection

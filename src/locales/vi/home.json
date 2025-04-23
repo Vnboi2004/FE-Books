@@ -3,6 +3,10 @@
         "history": "Lịch sử",
         "art": "Nghệ thuật",
         "technology": "Công nghệ",
-        "fiction": "Viễn tưởng"
+        "fiction": "Viễn tưởng",
+        "science": "Khoa học",
+        "medical": "Y học",
+        "biography": "Tiểu sử"
+
    }
 }
