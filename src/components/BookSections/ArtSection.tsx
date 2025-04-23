@@ -13,11 +13,11 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 
 
-interface HistorySectionProps {
+interface ArtSectionProps {
     subject?: string;
 };
 
-const ArtSection: React.FC<HistorySectionProps> = ({ subject = 'art' }) => {
+const ArtSection: React.FC<ArtSectionProps> = ({ subject = 'art' }) => {
 
     const { t } = useTranslation('home');
     
