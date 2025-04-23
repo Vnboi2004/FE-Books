@@ -1,4 +1,5 @@
 import { ArtSection, HistorySection, TechnologySection } from "../../components/BookSections";
+import FictionSection from "../../components/BookSections/FictionSection";
 import MainLayout from "../../components/layout/MainLayout"
 import { IoSearchOutline } from "react-icons/io5";
 
@@ -22,6 +23,9 @@ import { IoSearchOutline } from "react-icons/io5";
             <ArtSection/>
             {/* Technology */}
             <TechnologySection/>
+            {/* Fiction */}
+            <FictionSection/>
+
         </MainLayout>
     )
 }
