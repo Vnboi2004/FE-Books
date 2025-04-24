@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { GoogleBookItem } from "../../types/googleBooks.types";
 import { googleBooksApi } from "../../api/googleBooks.api";
-import { TiStarFullOutline } from "react-icons/ti";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // CSS cơ bản
 import 'swiper/css/pagination'; // nếu dùng phân trang
@@ -11,6 +10,8 @@ import { Swiper as SwiperType } from 'swiper';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
+import BookCard from "./BookCard";
+import { Link } from "react-router-dom";
 
 
 interface HistorySectionProps {
@@ -25,7 +26,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({ subject = 'history' }) 
     const [loading, setLoading] = useState<boolean>(true);
     const swiperRef = useRef<SwiperType>(null);
 
-
+    // Render first data
     useEffect(() => {
         const fetchBooks = async () => {
             try {
@@ -41,6 +42,7 @@ const HistorySection: React.FC<HistorySectionProps> = ({ subject = 'history' }) 
 
         fetchBooks();
     }, [subject]);
+
 
     if (loading) return <p>Đang tải sách...</p>;
 
@@ -84,36 +86,10 @@ const HistorySection: React.FC<HistorySectionProps> = ({ subject = 'history' }) 
                         className=""
                         >
                             {books.map((book) => (
-                                <SwiperSlide key={book.id}>
-                                    <div className="w-full border border-outline-variant rounded-xl cursor-pointer hover:bg-primary-container hover:no-underline transition-all duration-200 ease-in-out active:rounded-sm">
-                                        <div className="p-4 w-full flex flex-col">
-                                            {/* image */}
-                                            <img
-                                                src={book.volumeInfo.imageLinks?.thumbnail || ''}   
-                                                alt={book.volumeInfo.title}
-                                                className="h-56 object-cover rounded-xl mb-2"
-                                            />
-                                            <div className="flex flex-col items-start gap-1">
-                                                {/* Title */}
-                                                <h3 className="font-semibold text-inverse-surface line-clamp-1">{book.volumeInfo.title}</h3>
-                                                {/* authors */}
-                                                <p className="text-sm text-on-surface-variant line-clamp-1">
-                                                    {book.volumeInfo.authors?.join(', ') || 'Tác giả không rõ'}
-                                                </p>
-                                                {/* published date */}
-                                                <p className="text-sm text-on-surface-variant">{book.volumeInfo.publishedDate}</p>
-                                                {/* averageRating */}
-                                                <div className='flex items-center gap-2'>
-                                                    <div className='flex items-center'>
-                                                        {[...Array(5)].map((_, index) => (
-                                                            <TiStarFullOutline key={index} className={` ${index < book.volumeInfo.averageRating ? "text-yellow-400" : "text-on-surface-variant"}`}/>
-                                                        ))}
-                                                    </div>
-                                                    <span className='text-sm text-on-surface-variant'>({book.volumeInfo.averageRating ? book.volumeInfo.averageRating : 0})</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <SwiperSlide>
+                                    <Link to={`/book/${subject}/${book.id}`} key={book.id}>
+                                        <BookCard book={book}/>
+                                    </Link>
                                 </SwiperSlide>
                             ))}
                     </Swiper>

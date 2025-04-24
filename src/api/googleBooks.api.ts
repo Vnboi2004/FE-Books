@@ -15,4 +15,8 @@ export const googleBooksApi = {
     );
     return response.data;
   },
+  getBookDetail: async (id: string): Promise<GoogleBooksResponse> => {
+    const response = await axiosClient.get<GoogleBooksResponse>(`/volumes/${id}`);
+    return response.data;
+  },
 };
