@@ -1,7 +1,11 @@
-import { ArtSection, HistorySection, TechnologySection } from "../../components/BookSections";
-import BiographySection from "../../components/BookSections/BiographySection";
-import FictionSection from "../../components/BookSections/FictionSection";
-import MedicalSection from "../../components/BookSections/MedicalSection";
+import { 
+    ArtSection, 
+    HistorySection, 
+    TechnologySection, 
+    BiographySection, 
+    FictionSection, 
+    MedicalSection 
+} from "../../components/BookSections";
 import MainLayout from "../../components/layout/MainLayout"
 import { IoSearchOutline } from "react-icons/io5";
 
