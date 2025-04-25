@@ -49,10 +49,7 @@ const MedicalSection: React.FC<MedicalSectionProps> = ({ subject = 'medical' }) 
         <div className="py-16">
             <div className="py-10 flex flex-col gap-6">
                 {/* Categories */}
-                <div className="flex items-center gap-4">
-                    <div className="w-2 h-14 bg-primary rounded-md"></div>
-                    <h1 className="text-3xl text-inverse-surface font-semibold">{t('categories.medical')}</h1>
-                </div>
+                <h1 className="text-5xl text-on-surface text-center font-bold">{t('categories.medical')}</h1>
                 {/* Header */}
                 <div className="flex justify-end">
                     <div className="flex items-center gap-2">
