@@ -1,6 +1,6 @@
 import { navLinks } from '../../data';
 import { LuUserRound } from "react-icons/lu";
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import { MdGTranslate } from "react-icons/md";
@@ -30,9 +30,11 @@ const Header = () => {
       <div className='max-w-[var(--container-width-lg)] mx-auto py-6'>
         <div className='flex items-center justify-between'>
           {/* Logo */}
-          <h1 className='text-3xl font-primary font-semibold text-primary'>
-            TPHung
-          </h1>
+          <Link to="/">
+            <h1 className='text-3xl font-primary font-semibold text-primary'>
+              TPHung
+            </h1>
+          </Link>
           {/* Nav links */}
           <div>
             <ul className='flex items-center gap-6'>
