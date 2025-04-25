@@ -10,8 +10,8 @@ import { banners } from '../../data';
 const Banner = () => {
 
     return (
-        <div className="mx-auto py-16">
-           <h1 className="text-5xl text-on-surface text-center font-bold pb-6">Total category</h1>
+        <div className="mx-auto py-16"> 
+           <h1 className="text-5xl text-on-surface text-center font-bold pb-16">Popular Categories You Might Like</h1>
             <Swiper
             modules={[EffectCoverflow]}
             effect="coverflow"
@@ -27,13 +27,14 @@ const Banner = () => {
             className="w-full"
             >
             {banners.map((banner) => (
-                <SwiperSlide key={banner.id}>
-                <div className="px-6 py-10 text-center text-xl text-on-surface border border-outline-variant rounded-xl transition-all duration-300 cursor-pointer">
+                <SwiperSlide key={banner.id}>                                                                                                           
+                <div className="px-6 py-10 text-center text-xl bg-surface-1 text-on-surface font-semibold border border-outline-variant rounded-xl transition-all duration-300 cursor-pointer">
                     {banner.category}
                 </div>
                 </SwiperSlide>
             ))}
             </Swiper>
+            
         </div>
     );
 };

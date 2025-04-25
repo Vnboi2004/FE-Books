@@ -4,7 +4,7 @@ import { IoLogoGithub } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 const Footer = () => {
     return (
-        <div>
+        <div className="mt-10">
             {/* Contact */}
             <div className="bg-surface-2">
                 <div className="py-10">
