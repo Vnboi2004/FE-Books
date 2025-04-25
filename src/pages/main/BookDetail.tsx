@@ -17,7 +17,7 @@ const BookDetail = () => {
         }
     }, [bookId]);
 
-    console.log(book);
+    console.log(book);  
 
     return (
         <MainLayout>
