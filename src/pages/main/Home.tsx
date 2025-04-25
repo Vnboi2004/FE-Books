@@ -6,6 +6,7 @@ import {
     FictionSection, 
     MedicalSection 
 } from "../../components/BookSections";
+import Banner from "../../components/layout/Banner";
 import MainLayout from "../../components/layout/MainLayout"
 import { IoSearchOutline } from "react-icons/io5";
 
@@ -35,6 +36,8 @@ import { IoSearchOutline } from "react-icons/io5";
             <MedicalSection/>
             {/* Biography */}
             <BiographySection/>
+            {/* Banner */}
+            <Banner/>
 
         </MainLayout>
     )
