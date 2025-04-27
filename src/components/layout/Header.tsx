@@ -32,7 +32,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/">
             <h1 className='text-3xl font-primary font-semibold text-primary'>
-              TPHung
+              ReadingHub
             </h1>
           </Link>
           {/* Nav links */}
