@@ -5,8 +5,8 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import { FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { IoLocation } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
+import { BiLogoInstagramAlt } from "react-icons/bi";
 
 const Contact = () => {
     return (
@@ -47,27 +47,26 @@ const Contact = () => {
                 >
                   {/* Card 1 */}
                   <SwiperSlide>
-                    <div></div>
-                    <h1 className='text-5xl text-on-surface text-center font-bold'>Liên hệ với chúng tôi</h1>
-                    <div className='flex flex-col gap-4'>
+                    <h1 className='text-5xl text-on-surface text-center font-bold py-16'>Liên hệ với chúng tôi</h1>
+                    <div className='flex flex-col gap-4 p-4'>
                       {/* Box 1 */}
                       <div className='flex items-center gap-4'>
-                        <div className='border border-outline-variant round-xl'>
+                        <div className='flex items-center gap-2 border px-6 py-10 border-outline-variant rounded-2xl w-full'>
                           <FaPhoneVolume/>
                           <span>+84 918 488 431</span>
                         </div>
-                        <div className='border border-outline-variant round-xl'>
+                        <div className='flex items-center gap-2 border px-6 py-10 border-outline-variant rounded-2xl w-full'>
                           <MdEmail/>
                           <span>tphung1724@gmail.com</span>
                         </div>
                       </div>
                       {/* Box 2 */}
                       <div className='flex items-center gap-4'>
-                        <div className='border border-outline-variant round-xl'>
-                          <IoLocation />
-                          <span>48/3/3A Đ. Số 3, Trường Thọ, Thủ Đức, Hồ Chí Minh, Việt Nam</span>
+                        <div className='flex items-center gap-2 border px-6 py-10 border-outline-variant rounded-2xl w-full'>
+                          <BiLogoInstagramAlt  />
+                          <span>phuochung_4</span>
                         </div>
-                        <div className='border border-outline-variant round-xl'>
+                        <div className='flex items-center gap-2 border px-6 py-10 border-outline-variant rounded-2xl w-full'>
                           <FaFacebookF/>
                           <span>Trương Phước Hưng</span>
                         </div>
@@ -75,9 +74,9 @@ const Contact = () => {
                     </div>
                   </SwiperSlide>
                   {/* Card 2 */}
-                  <SwiperSlide>Slide 2</SwiperSlide>
+                  <SwiperSlide>Google map</SwiperSlide>
                   {/* Card 3 */}
-                  <SwiperSlide>Slide 3</SwiperSlide>
+                  <SwiperSlide>Get started</SwiperSlide>
                 </Swiper>
               </div>
             </div>
