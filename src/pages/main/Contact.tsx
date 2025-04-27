@@ -11,72 +11,74 @@ import { FaFacebookF } from "react-icons/fa";
 const Contact = () => {
     return (
       <MainLayout>
-        <div className='w-full h-screen'>
-          <h1 className='py-16 text-5xl text-on-surface text-center font-bold'>Liên hệ với chúng tôi</h1>
+        <div className='w-full h-screen py-16'>
           <div className='relative overflow-x-clip w-full h-full'>
             {/* Content left */}
-            <div className='absolute top-0 left-0 bg-surface-1 w-full h-auto md:w-[calc(50%+32px)] z-[0]'>
-              <div>
+            <div className='absolute top-0 left-0 bg-surface-1 w-full h-auto md:w-[calc(50%+32px)] z-[0] rounded-3xl'>
+              <div className='p-12'>
                 {/* Logo */}
-                <img src="" alt="" />
+                <img src="" alt=""  className='w-30 h-30 object-cover rounded-xl'/>
                 {/* Text */}
-                <div>
+                <div className='flex flex-col gap-4 mt-8'>
                   {/* Title */}
-                  <h1>ReadingHub</h1>
+                  <h1 className='text-5xl text-primary font-bold'>ReadingHub</h1>
                   {/* Text content */}
-                  <h2>Read Anytime, Anywhere</h2>
+                  <h2 className='text-4xl leading-tight text-primary font-bold'>Read Anytime, Anywhere</h2>
                   {/* Description */}
-                  <p>Your favorite online book reading platform. Discover thousands of books, completely free and convenient!</p>
+                  <p className='text-sm text-on-surface-variant'>Your favorite online book reading platform. Discover thousands of books, completely free and convenient!</p>
                   {/* Submit */}
-                  <button>
-                    Get Started
-                  </button>
+                  <div>
+                    <button className='px-6 py-4 font-bold text-on-primary bg-primary rounded-full hover:no-underline 
+                    hover:bg-primary-shade active:rounded-xl duration-200 transition-all ease-linear cursor-pointer'>
+                      Get Started
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
             {/* Content right */}
-            <div className='absolute top-0 right-0 max-w-[740px] md:w-1/2 h-auto bg-surface-2 z-[1]'>
-              <div>
-              <Swiper
-                effect={'cards'}
-                grabCursor={true}
-                modules={[EffectCards]}
-                className="mySwiper"
-              >
-                {/* Card 1 */}
-                <SwiperSlide>
-                  <h1 className='text-5xl text-on-surface text-center font-bold'>Liên hệ với chúng tôi</h1>
-                  <div className='flex flex-col gap-4'>
-                    {/* Box 1 */}
-                    <div className='flex items-center gap-4'>
-                      <div className='border border-outline-variant round-xl'>
-                        <FaPhoneVolume/>
-                        <span>+84 918 488 431</span>
+            <div className='absolute top-0 right-0 max-w-[740px] md:w-1/2 h-auto bg-surface-2 z-[1] rounded-3xl'>
+              <div className=''>
+                <Swiper
+                  effect={'cards'}
+                  grabCursor={true}
+                  modules={[EffectCards]}
+                  className="mySwiper"
+                >
+                  {/* Card 1 */}
+                  <SwiperSlide>
+                    <div></div>
+                    <h1 className='text-5xl text-on-surface text-center font-bold'>Liên hệ với chúng tôi</h1>
+                    <div className='flex flex-col gap-4'>
+                      {/* Box 1 */}
+                      <div className='flex items-center gap-4'>
+                        <div className='border border-outline-variant round-xl'>
+                          <FaPhoneVolume/>
+                          <span>+84 918 488 431</span>
+                        </div>
+                        <div className='border border-outline-variant round-xl'>
+                          <MdEmail/>
+                          <span>tphung1724@gmail.com</span>
+                        </div>
                       </div>
-                      <div className='border border-outline-variant round-xl'>
-                        <MdEmail/>
-                        <span>tphung1724@gmail.com</span>
+                      {/* Box 2 */}
+                      <div className='flex items-center gap-4'>
+                        <div className='border border-outline-variant round-xl'>
+                          <IoLocation />
+                          <span>48/3/3A Đ. Số 3, Trường Thọ, Thủ Đức, Hồ Chí Minh, Việt Nam</span>
+                        </div>
+                        <div className='border border-outline-variant round-xl'>
+                          <FaFacebookF/>
+                          <span>Trương Phước Hưng</span>
+                        </div>
                       </div>
                     </div>
-                    {/* Box 2 */}
-                    <div className='flex items-center gap-4'>
-                      <div className='border border-outline-variant round-xl'>
-                        <IoLocation />
-                        <span>48/3/3A Đ. Số 3, Trường Thọ, Thủ Đức, Hồ Chí Minh, Việt Nam</span>
-                      </div>
-                      <div className='border border-outline-variant round-xl'>
-                        <FaFacebookF/>
-                        <span>Trương Phước Hưng</span>
-                      </div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-                {/* Card 2 */}
-                <SwiperSlide>Slide 2</SwiperSlide>
-                {/* Card 3 */}
-                <SwiperSlide>Slide 3</SwiperSlide>
-              </Swiper>
-
+                  </SwiperSlide>
+                  {/* Card 2 */}
+                  <SwiperSlide>Slide 2</SwiperSlide>
+                  {/* Card 3 */}
+                  <SwiperSlide>Slide 3</SwiperSlide>
+                </Swiper>
               </div>
             </div>
           </div>
