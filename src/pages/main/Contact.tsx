@@ -100,6 +100,30 @@ const Contact = () => {
                 {/* Card 3 */}
                 <SwiperSlide className='py-8 h-full bg-surface-2 rounded-3xl'>
                   <h1 className='text-5xl text-on-surface text-center font-bold py-10'>Send Us a Message</h1>
+                  <form action="" className='px-8 flex flex-col gap-4'>
+                    {/* Your name */}
+                    <div className='flex flex-col gap-2'>
+                      <label htmlFor="" className='text-sm text-on-surface-variant pl-2'>Your Name</label>
+                      <input type="text" className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none'/>
+                    </div>
+                    {/* Your email */}
+                    <div className='flex flex-col gap-2'>
+                      <label htmlFor="" className='text-sm text-on-surface-variant pl-2'>Your Email</label>
+                      <input type="email" className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none'/>
+                    </div>
+                    {/* Your message */}
+                    <div className='flex flex-col gap-2'>
+                      <label htmlFor="" className='text-sm text-on-surface-variant pl-2'>Your Message</label>
+                      <textarea name="" className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none resize-none'></textarea>
+                    </div>
+                    {/* Submit */}
+                    <div className='flex justify-end'>
+                      <button className='px-6 py-4 font-bold text-on-primary bg-primary rounded-full hover:no-underline 
+                      hover:bg-primary-shade active:rounded-xl duration-200 transition-all ease-linear cursor-pointer'>
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </SwiperSlide>
               </Swiper>
               </div>
