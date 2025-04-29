@@ -3,15 +3,38 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
+import 'swiper/css/navigation';
+import { Swiper as SwiperType } from 'swiper';
 import { FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { BiLogoInstagramAlt } from "react-icons/bi";
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Contact = () => {
+  // 
   const [openSider, setOpenSider] = useState(false);
+  
+  // Button next, prev slider
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
+
+  const handleSwiper = (swiper: SwiperType) => {
+    swiperRef.current = swiper;
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+
+
+    // Cập nhật lại khi slide thay đổi
+    swiper.on('slideChange', () => {
+      setIsBeginning(swiper.isBeginning);
+      setIsEnd(swiper.isEnd);
+    });
+  };
 
   return (
     <MainLayout>
@@ -46,14 +69,15 @@ const Contact = () => {
           <AnimatePresence>
             {openSider && (
               <motion.div 
-              initial={{ x: '100%', opacity: 0 }}
-              animate={{ x: 0, opacity: 1  }}
-              exit={{ x: '100%', opacity: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+                initial={{ x: '100%', opacity: 0 }}
+                animate={{ x: 0, opacity: 1  }}
+                exit={{ x: '100%', opacity: 0 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 className='absolute -top-10 right-0 max-w-[740px] md:w-1/2 h-full z-[1]'>
                 <Swiper
                   effect={'cards'}
                   grabCursor={true}
+                  onSwiper={handleSwiper}
                   modules={[EffectCards]}
                   className="mySwiper w-full h-full"
                 >
@@ -139,6 +163,20 @@ const Contact = () => {
                     </form>
                   </SwiperSlide>
                 </Swiper>
+                {/* Button prev slider */}
+                <button
+                  disabled={isBeginning} 
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  className={`absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 cursor-pointer z-[99] ${isBeginning ? 'hidden' : 'opacity-100'}`}>
+                  <FiChevronLeft className='text-5xl text-primary'/>
+                </button>
+                {/* Button next slider */}
+                <button 
+                  disabled={isEnd}
+                  onClick={() => swiperRef.current?.slideNext()}
+                  className={`absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 cursor-pointer z-[99] ${isEnd? 'hidden' : 'opacity-100'}`}>
+                  <FiChevronRight className='text-5xl text-primary'/>
+                </button>
               </motion.div> 
             )}
           </AnimatePresence>
