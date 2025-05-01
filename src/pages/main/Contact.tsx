@@ -23,23 +23,28 @@ const Contact = () => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
+  const [currentIndex, setCurrentIndex] = useState(1);
+  const [totalSlides, setTotalSlides] = useState(0);
+
   const handleSwiper = (swiper: SwiperType) => {
     swiperRef.current = swiper;
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
-
+    setCurrentIndex(swiper.realIndex + 1);
+    setTotalSlides(swiper.slides.length - (swiper.loopedSlides || 0));
 
     // Cập nhật lại khi slide thay đổi
     swiper.on('slideChange', () => {
       setIsBeginning(swiper.isBeginning);
       setIsEnd(swiper.isEnd);
+      setCurrentIndex(swiper.realIndex + 1);
     });
   };
 
   return (
     <MainLayout>
       <div className='w-full h-screen py-16'>
-        <div className='relative overflow-x-clip w-full h-full'>
+        <div className='relative w-full h-full'>
           {/* Content left */}
           <div className='absolute top-0 left-0 bg-surface-1 w-full h-auto md:w-[calc(50%+32px)] z-[0] rounded-3xl'>
             <div className='p-12'>
@@ -177,6 +182,15 @@ const Contact = () => {
                   className={`absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 cursor-pointer z-[99] ${isEnd? 'hidden' : 'opacity-100'}`}>
                   <FiChevronRight className='text-5xl text-primary'/>
                 </button>
+                {/* Page silder */}
+                <div className='absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-[99]'>
+                  {Array.from({ length: totalSlides}).map((_, index) => (
+                    <div 
+                      key={index} 
+                      className={`w-2 h-2 rounded-full duration-200 transition-all ease-linear ${index === currentIndex - 1 ? 'bg-primary' : 'bg-on-surface'}`}>
+                    </div>
+                  ))}
+                </div>
               </motion.div> 
             )}
           </AnimatePresence>
