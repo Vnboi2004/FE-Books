@@ -43,4 +43,7 @@
   --container-width-lg: 1024px;
   --container-width-xl: 1280px;
   --container-width-2xl: 1440px;
+
+  /* box-shadow */
+  --shadow-navigation: 0px 0px 8px 0px rgba(171, 199, 255, 0.53);
 }

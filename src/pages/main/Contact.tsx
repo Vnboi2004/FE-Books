@@ -172,23 +172,28 @@ const Contact = () => {
                 <button
                   disabled={isBeginning} 
                   onClick={() => swiperRef.current?.slidePrev()}
-                  className={`absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 cursor-pointer z-[99] ${isBeginning ? 'hidden' : 'opacity-100'}`}>
+                  className={`absolute top-1/2 -translate-y-1/2 left-0 -translate-x-1/2 cursor-pointer z-[99] 
+                  hover:shadow-navigation duration-300 transition-all ease-linear rounded-xl 
+                  ${isBeginning ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                   <FiChevronLeft className='text-5xl text-primary'/>
                 </button>
                 {/* Button next slider */}
                 <button 
                   disabled={isEnd}
                   onClick={() => swiperRef.current?.slideNext()}
-                  className={`absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 cursor-pointer z-[99] ${isEnd? 'hidden' : 'opacity-100'}`}>
+                  className={`absolute top-1/2 -translate-y-1/2 right-0 translate-x-1/2 cursor-pointer z-[99] 
+                  hover:shadow-navigation duration-300 transition-all ease-linear rounded-xl 
+                  ${isEnd? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                   <FiChevronRight className='text-5xl text-primary'/>
                 </button>
                 {/* Page silder */}
                 <div className='absolute -bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-[99]'>
                   {Array.from({ length: totalSlides}).map((_, index) => (
-                    <div 
+                    <button 
+                      onClick={() => swiperRef.current?.slideTo(index)}
                       key={index} 
-                      className={`w-2 h-2 rounded-full duration-200 transition-all ease-linear ${index === currentIndex - 1 ? 'bg-primary' : 'bg-on-surface'}`}>
-                    </div>
+                      className={`w-2 h-2 rounded-full duration-200 transition-all ease-linear cursor-pointer ${index === currentIndex - 1 ? 'bg-primary' : 'bg-on-surface'}`}>
+                    </button>
                   ))}
                 </div>
               </motion.div> 
