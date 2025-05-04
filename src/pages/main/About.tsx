@@ -1,6 +1,8 @@
 import MainLayout from "../../components/layout/MainLayout"
 import avatar from '../../assets/images/AvatarMe.jpg';
 import JavaScriptImage from '../../assets/images/js.svg';
+import TypeScriptImage from '../../assets/images/TypeScript.png';
+import TailwindCSSImage from '../../assets/images/TailwindCSS.svg';
 import ReactImage from '../../assets/images/react.svg';
 import ReactRouterImage from '../../assets/images/ReactRouter.svg';
 import ViteImage from '../../assets/images/Vitejs-logo.svg.png';
@@ -58,58 +60,83 @@ const About = () => {
                     <h1 className="text-5xl text-center text-inverse-surface font-bold">Technologies Used</h1>
                     <div className="grid grid-cols-4 gap-8 mt-12">
                         {/* Card JavaScript */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://www.javascript.com/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-js duration-200 transition-all ease-linear">
                                 <img src={JavaScriptImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">JavaScript</h1>
                             </div>
-                        </div>
+                        </a>
+                        {/* Type script */}
+                        <a href="https://www.javascript.com/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-typeScript duration-200 transition-all ease-linear">
+                                <img src={TypeScriptImage} alt="" className="w-[123px] h-[123px] object-contain"/>
+                                <h1 className="text-on-surface font-semibold text-center mt-4">TypeScript</h1>
+                            </div>
+                        </a>
+                        {/* TailwindCSS */}
+                        <a href="https://www.javascript.com/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-tailwindCSS duration-200 transition-all ease-linear">
+                                <img src={TailwindCSSImage} alt="" className="w-[123px] h-[123px] object-contain"/>
+                                <h1 className="text-on-surface font-semibold text-center mt-4">TailwindCSS</h1>
+                            </div>
+                        </a>
                         {/* Card ReactJS */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://react.dev/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-react duration-200 transition-all ease-linear">
                                 <img src={ReactImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">React</h1>
                             </div>
-                        </div>
+                        </a>
                         {/* Card Vite */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://vite.dev/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-vite duration-200 transition-all ease-linear">
                                 <img src={ViteImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">Vite</h1>
                             </div>
-                        </div>
+                        </a>
                         {/* React Router */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://reactrouter.com/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-router duration-200 transition-all ease-linear">
                                 <img src={ReactRouterImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">React Router</h1>
                             </div>
-                        </div>
+                        </a>
                         {/* Card Axios */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://axios-http.com/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-axios duration-200 transition-all ease-linear">
                                 <img src={AxiosImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">Axios</h1>
                             </div>
-                        </div>
+                        </a>
                         {/* Card Swiper */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://swiperjs.com/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-swiper duration-200 transition-all ease-linear">
                                 <img src={SwiperImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">Swiper</h1>
                             </div>
-                        </div>
+                        </a>
                         {/* Card Motion */}
-                        <div>
-                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center">
+                        <a href="https://motion.dev/">
+                            <div className="border border-outline-variant rounded-3xl p-6 flex flex-col items-center hover:shadow-motion duration-200 transition-all ease-linear">
                                 <img src={MotionImage} alt="" className="w-[123px] h-[123px] object-contain"/>
                                 <h1 className="text-on-surface font-semibold text-center mt-4">Motion</h1>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 {/* Tính năng */}
-                <div className="mb-28"></div>
+                <div className="mb-28">
+                    <div className="relative w-full h-64">
+                        
+                        <div className="absolute top-0 left-10 w-4 h-4 bg-blue-500 rounded-full z-10">A</div>
+
+                  
+                        <div className="absolute bottom-0 right-10 w-4 h-4 bg-green-500 rounded-full z-10">B</div>
+                        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                            <line x1="50" y1="10" x2="90%" y2="90%" stroke="gray" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
                 {/* Hướng phát triển */}
                 <div className="mb-28"></div>
                 {/* Liên hệ */}
