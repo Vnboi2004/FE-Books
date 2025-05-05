@@ -9,9 +9,58 @@ import ViteImage from '../../assets/images/Vitejs-logo.svg.png';
 import AxiosImage from '../../assets/images/Axios.svg';
 import SwiperImage from '../../assets/images/swiper-logo.svg';
 import MotionImage from '../../assets/images/motion.png';
+import { useEffect, useRef, useState } from "react";
 
+type PointId = 'A' | 'B' | 'C' | 'D';
+type Connection = {
+    from: PointId;
+    to: PointId;
+};
+
+const points: { id: PointId, x: number, y: number}[] = [
+    { id: 'A', x: 50, y: 100 },
+    { id: 'B', x: 400, y: 150 },
+    { id: 'C', x: 200, y: 300 },
+    { id: 'D', x: 600, y: 400 },
+];
+
+const connections: Connection[] = [
+    { from: 'A', to: 'B' },
+    { from: 'A', to: 'C' },
+    { from: 'B', to: 'D' },
+];
 
 const About = () => {
+    const refs = useRef<Record<PointId, HTMLDialogElement | null>>({ A: null, B: null, C: null, D: null});
+    const [lines, setLines] = useState<{ x1: number; y1: number; x2: number; y2: number; id: string}[]>([]);
+
+    useEffect(() => {
+        const updateLines = () => {
+          const newLines = connections.map(({ from, to }) => {
+            const fromEl = refs.current[from];
+            const toEl = refs.current[to];
+            if (fromEl && toEl) {
+              const fromRect = fromEl.getBoundingClientRect();
+              const toRect = toEl.getBoundingClientRect();
+              return {
+                id: `${from}-${to}`,
+                x1: fromRect.left + fromRect.width / 2,
+                y1: fromRect.top + fromRect.height / 2,
+                x2: toRect.left + toRect.width / 2,
+                y2: toRect.top + toRect.height / 2,
+              };
+            }
+            return null;
+          }).filter(Boolean) as any[];
+          setLines(newLines);
+        };
+    
+        updateLines();
+        window.addEventListener('resize', updateLines);
+        return () => window.removeEventListener('resize', updateLines);
+    }, []);
+
+
     return (
         <MainLayout>
             <div className="w-full py-16">
@@ -126,14 +175,29 @@ const About = () => {
                 </div>
                 {/* Tính năng */}
                 <div className="mb-28">
-                    <div className="relative w-full h-64">
-                        
-                        <div className="absolute top-0 left-10 w-4 h-4 bg-blue-500 rounded-full z-10">A</div>
-
-                  
-                        <div className="absolute bottom-0 right-10 w-4 h-4 bg-green-500 rounded-full z-10">B</div>
-                        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
-                            <line x1="50" y1="10" x2="90%" y2="90%" stroke="gray" stroke-width="2" />
+                    <div className="relative w-full h-screen">
+                        {points.map((point) => (
+                            <div
+                            key={point.id}
+                            ref={(el) => (refs.current[point.id] = el)}
+                            className="absolute w-12 h-12 rounded-full bg-blue-500 text-white flex items-center justify-center"
+                            style={{ top: point.y, left: point.x }}
+                          >
+                            {point.id}
+                          </div>
+                        ))}
+                        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none">
+                            {lines.map((line) => (
+                            <line
+                                key={line.id}
+                                x1={line.x1}
+                                y1={line.y1}
+                                x2={line.x2}
+                                y2={line.y2}    
+                                stroke="gray"
+                                strokeWidth="2"
+                            />
+                            ))}
                         </svg>
                     </div>
                 </div>
