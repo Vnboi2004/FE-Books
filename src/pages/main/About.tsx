@@ -109,7 +109,9 @@ const About = () => {
                     </div>
                 </div>
                 {/* Tính năng */}
-                <div className="mb-28"></div>
+                <div className="mb-28">
+                    
+                </div>
                 {/* Hướng phát triển */}
                 <div className="mb-28"></div>
                 {/* Liên hệ */}
