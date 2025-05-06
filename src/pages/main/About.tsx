@@ -9,74 +9,16 @@ import ViteImage from '../../assets/images/Vitejs-logo.svg.png';
 import AxiosImage from '../../assets/images/Axios.svg';
 import SwiperImage from '../../assets/images/swiper-logo.svg';
 import MotionImage from '../../assets/images/motion.png';
-import { useEffect, useRef, useState } from "react";
-
-type PointId = '1' | '2' | '3' | '4' | '5' | '6' | '7'; // Các id của các điểm trong đồ thị
-type Connection = {
-    from: PointId;
-    to: PointId;
-};
-
-const maxWidth = 1024; // Giới hạn chiều rộng tối đa của container
-const maxHeight = 911; // Giới hạn chiều cao tối đa của container
-const sizeContainer = 300; // Kích thước của container
-
-const points: { id: string, x: number, y: number, label: string }[] = [
-    { id: '1', x: maxWidth / 2, y: maxHeight / 2, label: 'Main Features' }, // Title
-    // Left side
-    { id: '2', x: 0, y: 0, label: 'View book list by categories' },
-    { id: '3', x: 100, y: maxHeight / 2, label: 'Read books online' },
-    { id: '4', x: 0, y: maxHeight, label: 'Search for books by keyword' },
-    // Right side
-    { id: '5', x: maxWidth, y: 0, label: 'Responsive layout for mobile and desktop' },
-    { id: '6', x:maxWidth, y: maxHeight / 2, label: 'Table ABC' },
-    { id: '7', x: maxWidth, y: maxHeight, label: 'Mobile DEF' },
-];
-
-const connections: Connection[] = [
-    { from: '1', to: '2' },
-    { from: '1', to: '3' },
-    { from: '1', to: '4' },
-    { from: '1', to: '5' },
-    { from: '1', to: '6' },
-    { from: '1', to: '7' },
-];
-
+import { FaUser } from "react-icons/fa";
+import { FaRegFaceKissWinkHeart } from "react-icons/fa6";
+import { BsBookmarkCheckFill } from "react-icons/bs";
+import { GrInProgress } from "react-icons/gr";
+import { FaCommentDots } from "react-icons/fa";
+import { MdLanguage } from "react-icons/md";
+import { RiComputerFill } from "react-icons/ri";
+import { BsFillClockFill } from "react-icons/bs";
+import { FaHistory } from "react-icons/fa";
 const About = () => {
-    const refs = useRef<Record<PointId, HTMLDialogElement | null>>({ 1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null });
-    const [lines, setLines] = useState<{ x1: number; y1: number; x2: number; y2: number; id: string}[]>([]);
-    const containerRef = useRef<HTMLDivElement | null>(null);
-
-    useEffect(() => {
-        const updateLines = () => {
-          const containerRect = containerRef.current?.getBoundingClientRect();
-          if (!containerRect) return;
-      
-          const newLines = connections.map(({ from, to }) => {
-            const fromEl = refs.current[from];
-            const toEl = refs.current[to];
-            if (fromEl && toEl) {
-              const fromRect = fromEl.getBoundingClientRect();
-              const toRect = toEl.getBoundingClientRect();
-              return {
-                id: `${from}-${to}`,
-                x1: fromRect.left + fromRect.width / 2 - containerRect.left,
-                y1: fromRect.top + fromRect.height / 2 - containerRect.top,
-                x2: toRect.left + toRect.width / 2 - containerRect.left,
-                y2: toRect.top + toRect.height / 2 - containerRect.top,
-              };
-            }
-            return null;
-          }).filter(Boolean) as any[];
-          setLines(newLines);
-        };
-      
-        updateLines();
-        window.addEventListener('resize', updateLines);
-        return () => window.removeEventListener('resize', updateLines);
-      }, []);
-
-
     return (
         <MainLayout>
             <div className="w-full py-16">
@@ -191,39 +133,202 @@ const About = () => {
                 </div>
                 {/* Tính năng */}
                 <div className="mb-28">
-                    <div className="relative w-full h-screen" ref={containerRef}>
-                        {points.map((point) => (
-                            <div
-                                key={point.id}
-                                ref={(el) => (refs.current[point.id] = el)}
-                                className="absolute px-6 py-10 bg-surface-1 text-on-surface border border-outline-variant rounded-3xl z-[1]"
-                                style={{ top: point.y, left: point.x }}
-                            >
-                                {point.label} {/* Hiển thị label thay vì id */}
-                            </div>
-                        ))}
-                        <svg className="absolute top-0 left-0 w-full h-full pointer-events-none z-[0]">
-                            {lines.map((line) => (
-                                <line
-                                    key={line.id}
-                                    x1={line.x1}
-                                    y1={line.y1}
-                                    x2={line.x2}
-                                    y2={line.y2}
-                                    stroke="gray"
-                                    strokeWidth="2"
-                                />
-                            ))}
-                        </svg>
+                    <h1 className="text-5xl text-center text-inverse-surface font-bold">Main Features</h1>
+                    <div className="bg-surface-1 w-full h-auto px-18 py-14 mt-14 rounded-3xl flex flex-col gap-6">
+                        <div className="bg-surface-2 px-6 py-2 rounded-xl relative">
+                            {/* Text */}
+                            <h1 className="text-on-surface text-xl font-bold mb-2">View Book List by Categories</h1>
+                            <p className="text-base text-on-surface-variant">
+                                Easily browse books organized by categories such as novels, self-help, science, and more.
+                                This helps users find books that match their interests faster.
+                            </p>
+                            {/* List icons */}
+                            <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-4 h-4 rounded-full bg-primary"></div>
+                        </div>
+                        <div className="bg-surface-2 px-6 py-2 rounded-xl relative">
+                            {/* Text */}
+                            <h1 className="text-on-surface text-xl font-bold mb-2">Read Books Online</h1>
+                            <p className="text-base text-on-surface-variant">
+                                Access the full content of each book directly on the website. The book detail page provides 
+                                a clean and readable layout for an enjoyable reading experience.
+                            </p>
+                            {/* List icons */}
+                            <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-4 h-4 rounded-full bg-primary"></div>
+                        </div>
+                        <div className="bg-surface-2 px-6 py-2 rounded-xl relative">
+                            {/* Text */}
+                            <h1 className="text-on-surface text-xl font-bold mb-2">Search for Books</h1>
+                            <p className="text-base text-on-surface-variant">
+                                Quickly find books by typing keywords in the search bar. The feature supports title, author, 
+                                or genre matching.
+                            </p>
+                            {/* List icons */}
+                            <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-4 h-4 rounded-full bg-primary"></div>
+                        </div>
+                        <div className="bg-surface-2 px-6 py-2 rounded-xl relative">
+                            {/* Text */}
+                            <h1 className="text-on-surface text-xl font-bold mb-2">Responsive Layout</h1>
+                            <p className="text-base text-on-surface-variant">
+                                The interface adapts smoothly to different screen sizes, providing a seamless experience on 
+                                both desktop and mobile devices..
+                            </p>
+                            {/* List icons */}
+                            <div className="absolute top-1/2 -left-8 -translate-y-1/2 w-4 h-4 rounded-full bg-primary"></div>
+                        </div>
                     </div>
                 </div>
-
                 {/* Hướng phát triển */}
                 <div className="mb-28">
-
+                    {/* Title */}
+                    <h1 className="text-5xl text-center text-inverse-surface font-bold">Future Plans</h1>
+                    {/* Content */}
+                    <div className="mt-14 grid grid-cols-3 gap-8">
+                        {/* Cols 1 */}
+                        <div className="flex flex-col gap-6">
+                            {/* Card 1 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <FaUser className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">User Accounts</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Implement a secure login and registration system so that users can create personal accounts, 
+                                        manage their preferences, and store their reading history.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Card 2 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <FaRegFaceKissWinkHeart className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Favorite Book Collections</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Allow users to save their favorite books into a personal collection or reading list, 
+                                        making it easier to access and revisit books they love.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Card 3 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <BsBookmarkCheckFill className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Bookmark Pages</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Users can bookmark specific pages in a book to return to them later with ease,
+                                        making the reading experience more personalized and convenient.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Cols 2 */}
+                        <div className="flex flex-col gap-8">
+                            {/* Card 1 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <GrInProgress className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Reading Progress Tracking</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Save the user's current reading position in each book so they can easily continue where 
+                                        they left off, even on different devices.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Card 2 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <FaCommentDots className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Comment & Rating System</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Enable users to leave comments and rate books to help other readers discover 
+                                        high-quality content and share opinions.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Card 3 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <MdLanguage className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Multilingual Support</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Add support for multiple languages (e.g., Vietnamese and English) 
+                                        to reach a wider audience and enhance accessibility.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Cols 3*/}
+                        <div className="flex flex-col gap-8">
+                            {/* Card 1 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <RiComputerFill className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Multidevice Sync</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Users can continue reading seamlessly across different devices by syncing 
+                                        their progress with their account.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Card 2 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <BsFillClockFill className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Estimated Reading Time</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        Show an estimated reading time based on the book's length to help users 
+                                        plan their reading sessions better.
+                                    </p>
+                                </div>
+                            </div>
+                            {/* Card 3 */}
+                            <div className="grid grid-cols-[auto_1fr] items-start gap-4 bg-surface-1 p-6 rounded-3xl border border-outline-variant shadow-navigation">
+                                {/* Icon */}
+                                <div className="bg-primary-container p-4 rounded-xl flex flex-col justify-start">
+                                    <FaHistory className="text-on-surface text-3xl"/>
+                                </div>
+                                {/* Text */}
+                                <div>
+                                    <h1 className="text-on-surface text-xl font-bold mb-2">Recently Read Books</h1>
+                                    <p className="text-base text-on-surface-variant">
+                                        The platform keeps track of books the user recently opened, allowing quick 
+                                        access to continue reading without searching again.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                {/* Liên hệ */}
-                <div className="mb-28"></div>
             </div>
         </MainLayout>
     )
