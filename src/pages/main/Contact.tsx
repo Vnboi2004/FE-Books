@@ -9,12 +9,12 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { FaFacebookF } from "react-icons/fa";
 import { BiLogoInstagramAlt } from "react-icons/bi";
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Contact = () => {
-  // 
+  // Open slider
   const [openSider, setOpenSider] = useState(false);
   
   // Button next, prev slider
@@ -26,12 +26,17 @@ const Contact = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [totalSlides, setTotalSlides] = useState(0);
 
+
+  const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT;
+
   const handleSwiper = (swiper: SwiperType) => {
     swiperRef.current = swiper;
     setIsBeginning(swiper.isBeginning);
     setIsEnd(swiper.isEnd);
     setCurrentIndex(swiper.realIndex + 1);
     setTotalSlides(swiper.slides.length - (swiper.loopedSlides || 0));
+
+    console.log("Rendering ContactForm");
 
     // Cập nhật lại khi slide thay đổi
     swiper.on('slideChange', () => {
@@ -40,6 +45,46 @@ const Contact = () => {
       setCurrentIndex(swiper.realIndex + 1);
     });
   };
+
+  // form data contact submit
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData, // Giữ nguyên các giá trị cũ
+      [e.target.name]: e.target.value, // Cập nhật giá trị mới
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('Submitting...');
+
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'aplication/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus('Message sent!');
+      setFormData({ name: '', email: '', message: '' });
+    } else {
+      setStatus('Failed to send message.');
+    }
+  };
+
+  
+
 
   return (
     <MainLayout>
@@ -142,25 +187,46 @@ const Contact = () => {
                   {/* Card 3 */}
                   <SwiperSlide className='py-8 h-full bg-surface-2 rounded-3xl'>
                     <h1 className='text-5xl text-on-surface text-center font-bold py-10'>Send Us a Message</h1>
-                    <form action="" className='px-8 flex flex-col gap-4'>
+                    <form 
+                      onSubmit={handleSubmit}
+                      className='px-8 flex flex-col gap-4'>
                       {/* Your name */}
                       <div className='flex flex-col gap-2'>
                         <label htmlFor="" className='text-sm text-on-surface-variant pl-2'>Your Name</label>
-                        <input type="text" className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none'/>
+                        <input 
+                          type="text" 
+                          name='name'
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none'/>
                       </div>
                       {/* Your email */}
                       <div className='flex flex-col gap-2'>
                         <label htmlFor="" className='text-sm text-on-surface-variant pl-2'>Your Email</label>
-                        <input type="email" className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none'/>
+                        <input 
+                          type="email" 
+                          name='email'
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none'/>
                       </div>
                       {/* Your message */}
                       <div className='flex flex-col gap-2'>
                         <label htmlFor="" className='text-sm text-on-surface-variant pl-2'>Your Message</label>
-                        <textarea name="" className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none resize-none'></textarea>
+                        <textarea 
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                          required 
+                          className='w-full p-3 border border-outline rounded-lg text-on-surface outline-none resize-none'></textarea>
                       </div>
                       {/* Submit */}
                       <div className='flex justify-end'>
-                        <button className='px-6 py-4 font-bold text-on-primary bg-primary rounded-full hover:no-underline 
+                        <button 
+                          type='submit'
+                          className='px-6 py-4 font-bold text-on-primary bg-primary rounded-full hover:no-underline 
                         hover:bg-primary-shade active:rounded-xl duration-200 transition-all ease-linear cursor-pointer'>
                           Submit
                         </button>
