@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom"
-import MainLayout from "../../components/layout/MainLayout"
 
 const NotFound = () => {
     return (
-        <MainLayout>
-            <div className="h-screen w-full relative bg-[#3E92CC]">
-                <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-slate-100 w-sm rounded-md">
-                    <h1 className="text-4xl font-semibold text-center py-6">Not Found 404</h1>
-                    <div className="flex justify-center py-6">
-                        <Link to='/' className=" p-2 bg-black font-medium text-white rounded-md">
-                            Back to home
-                        </Link>
-                    </div>
-                </div>
+        <div className="w-full h-screen">
+            {/* Image */}
+            <div className="relative bg-[url('https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif')] w-full h-[400px] bg-no-repeat bg-center mt-28"></div>
+            {/* Content */}
+            <div className="flex flex-col items-center gap-4">
+                {/* Title */}
+                <h1 className="text-primary text-5xl font-bold">Look like you're lost</h1>
+                {/* Description */}
+                <p className="text-primary text-base">the page you are looking for not avaible!</p>
+                {/* Button back to home() */}
+                <Link 
+                    to="/" 
+                    className="text-on-primary bg-primary font-bold p-4 rounded-xl hover:bg-primary-shade duration-150 transition-all ease-in-out">
+                        Go to Home
+                </Link>        
             </div>
-        </MainLayout>
+        </div>
+    
     )
 }
 
